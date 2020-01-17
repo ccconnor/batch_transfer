@@ -8,4 +8,4 @@
 该脚本相当于BitcoinDiamond-Qt转账时添加多个收款人, 也可以用BitcoinDiamond-Qt代替
 
 #### **注意**
-不要重复点击脚本, 否则会造成重复转账, 转账完成后最好把address_list.csv删除, 然后用BitcoinDiamond-Qt把余额转走
+不要随便双击脚本, 除非address_list.csv中的地址和数量是正确的, 不要重复点击脚本, 否则会造成重复转账, 转账完成后最好把address_list.csv删除, 然后用BitcoinDiamond-Qt把余额转走
