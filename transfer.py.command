@@ -64,9 +64,11 @@ def send_to_address_list_from_csv():
 
 
 if __name__ == '__main__':
+    print('\n\n+++++++++++++++++begin+++++++++++++++++\n')
     try:
-        set_net_type('regtest')
+        set_net_type('mainnet')
         send_to_address_list_from_csv()
     except Exception as e:
         print(e)
         print(traceback.format_exc())
+    print('\n++++++++++++++++++end++++++++++++++++++\n\n')
