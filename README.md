@@ -6,3 +6,6 @@
 3. 双击transfer.py.command即可, 成功会输出交易id, 错误会输出错误信息
 
 该脚本相当于BitcoinDiamond-Qt转账时添加多个收款人, 也可以用BitcoinDiamond-Qt代替
+
+#### **注意**
+不要重复点击脚本, 否则会造成重复转账, 转账完成后最好把address_list.csv删除, 然后用BitcoinDiamond-Qt把余额转走
