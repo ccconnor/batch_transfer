@@ -1,7 +1,6 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 import os
-import traceback
 
 import pandas as pd
 from bitcoinrpc.authproxy import AuthServiceProxy
@@ -61,14 +60,23 @@ def get_address_list():
 
 def send_to_address_list_from_csv():
     tx_id = bitcoinrpc.sendmany('', get_address_list())
-    print('tx_id:', tx_id)
+    print('转账成功')
+    print('交易哈希:', tx_id)
 
 
 if __name__ == '__main__':
+    print('\n')
+    input_str = input('是否确认转账(Y/N)')
+    if input_str != 'Y':
+        print('退出转账\n\n')
+        exit(0)
+
     print('\n\n+++++++++++++++++begin+++++++++++++++++\n')
     try:
+        print('开始转账...')
         set_net_type('regtest')
         send_to_address_list_from_csv()
     except Exception as e:
+        print('转账失败')
         print(e)
     print('\n++++++++++++++++++end++++++++++++++++++\n\n')
