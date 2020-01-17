@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
+import os
 import traceback
 
 import pandas as pd
@@ -27,7 +28,7 @@ regtest = {
 }
 
 bitcoinrpc = None
-file_name = 'address_list.csv'
+file_name = os.path.dirname(os.path.abspath(__file__)) + '/address_list.csv'
 
 
 def set_net_type(network):
@@ -52,7 +53,7 @@ def get_new_address(count):
 
 def get_address_list():
     address_dict = {}
-    df = pd.read_csv(file_name, header=None, sep=',', names=['address', 'value'])
+    df = pd.read_csv(file_name, header=None, sep=',', names=['address', 'value'], dtype={'address': str, 'value': str})
     for index, row in df.iterrows():
         address_dict[row['address']] = row['value']
     return address_dict
@@ -66,9 +67,8 @@ def send_to_address_list_from_csv():
 if __name__ == '__main__':
     print('\n\n+++++++++++++++++begin+++++++++++++++++\n')
     try:
-        set_net_type('mainnet')
+        set_net_type('regtest')
         send_to_address_list_from_csv()
     except Exception as e:
         print(e)
-        print(traceback.format_exc())
     print('\n++++++++++++++++++end++++++++++++++++++\n\n')
